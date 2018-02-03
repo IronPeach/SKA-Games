@@ -1,4 +1,109 @@
 <!DOCTYPE html>
-<head>
-	<title>Hang Man!</title>
-</head>
+<html>
+	<head>
+		<title>HangMan!</title>
+	</head>
+	<body>
+
+		<div align="center">
+			<h2><font face="Helvetica">Welcome to play the Hang Man Game</font></h2>
+			<h4><font face="Helvetica">Before you play this game, please disable the "Adblocker".<br> If you use "Adblocker", then we can't get the support we should got <br> than we are not able to produce better game!</font></h4>
+		</div>
+
+    <script>
+
+    // Create an array of words
+
+		var words = [
+				"limited",
+				"dynamic"
+				"category"
+				"coin"
+				"plan"
+				"apparatus"
+				"cell"
+				"clerk"
+				"visit"
+				"fool"
+				"contain"
+				"origin"
+				"absolute"
+				"zone"
+				"nationalism"
+				"jam"
+				"chalk"
+				"large"
+				"forge"
+				"jungle"
+				/*Add more words if you're interested...
+				This website that is named randomwordgenerator.com is really good for this
+				We need more words for a hangman...*/
+			]
+
+    // Pick a random word
+
+    	var word = words[Math.floor(Math.random() * words.length)];
+
+    // Set up the answer array
+
+	    var answerArray = [];
+
+	    for (var i = 0; i < word.length; i++) {
+
+   		   answerArray[i] = "_";
+
+ 	   }
+
+	    var remainingLetters = word.length;
+
+    // The game loop
+
+ 	   while (remainingLetters > 0) {
+
+      // Show the player their progress
+
+ 	     alert(answerArray.join(" "));
+
+      // Get a guess from the player
+
+ 	     var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+	      if (guess === null) {
+
+        // Exit the game loop
+
+   		     break;
+
+  	    } else if (guess.length !== 1) {
+
+  	      alert("Please enter a single letter.");
+
+ 	     } else {
+
+        // Update the game state with the guess
+
+        for (var j = 0; j < word.length; j++) {
+
+          if (word[j] === guess) {
+
+         	   answerArray[j] = guess;
+
+         	   remainingLetters--;
+
+          }
+
+        }
+
+      }
+
+    // The end of the game loop
+
+    }
+
+    // Show the answer and congratulate the player
+
+    alert(answerArray.join(" "));
+
+    alert("Good job! The answer was " + word);
+	</body>
+</html>
